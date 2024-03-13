@@ -1,0 +1,126 @@
+[
+    {
+        "id": "3ebf61a2522e62dd",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cee70ef31dc81551",
+        "type": "ibmiot in",
+        "z": "3ebf61a2522e62dd",
+        "authentication": "apiKey",
+        "apiKey": "118a00d30cdbf8ed",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "wokwi",
+        "applicationId": "",
+        "deviceType": "abcd",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": "",
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 250,
+        "y": 140,
+        "wires": [
+            [
+                "1425372ea8d5ad54"
+            ]
+        ]
+    },
+    {
+        "id": "1425372ea8d5ad54",
+        "type": "function",
+        "z": "3ebf61a2522e62dd",
+        "name": "function 1",
+        "func": "msg.payload = msg.payload.Status\n\nif (msg.payload == true) {\n    msg.payload = \"Wake up Dude!\";\n}\nelse {\n    msg.payload = \"Good to go!\";\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 260,
+        "wires": [
+            [
+                "82917ea78e6d1211",
+                "3bdb6161d9234597"
+            ]
+        ]
+    },
+    {
+        "id": "3bdb6161d9234597",
+        "type": "debug",
+        "z": "3ebf61a2522e62dd",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "82917ea78e6d1211",
+        "type": "ui_text",
+        "z": "3ebf61a2522e62dd",
+        "group": "f2509b9044481ac2",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Drowsy Driver",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 760,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "118a00d30cdbf8ed",
+        "type": "ibmiot",
+        "name": "wokwi",
+        "keepalive": "60",
+        "serverName": "",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "f2509b9044481ac2",
+        "type": "ui_group",
+        "name": "",
+        "tab": "3e66a2a2a90bade5",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3e66a2a2a90bade5",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
